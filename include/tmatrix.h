@@ -37,15 +37,44 @@ public:
   }
   TDynamicVector(const TDynamicVector& v)
   {
+      sz = v.sz;
+      pMem = new T[sz];
+
+      for (int i = 0; i < sz; i++) {
+          pMem[i] = v.pMem[i];
+      }
   }
   TDynamicVector(TDynamicVector&& v) noexcept
   {
+
+      pMem = nullptr;
+      sz = 0;
+      swap(*this, v);
   }
   ~TDynamicVector()
   {
+      if (pMem != nullptr) {
+          delete[] pMem;
+      }
   }
   TDynamicVector& operator=(const TDynamicVector& v)
   {
+      if (*this == v) {
+          return *this;
+      }
+
+      if (pMem != nullptr) {
+          delete[]pMem;
+      }
+
+      sz = v.sz;
+      pMem = new T[sz];
+
+      for (int i = 0; i < sz; i++) {
+          pMem[i] = v.pMem[i];
+      }
+
+      return *this;
   }
   TDynamicVector& operator=(TDynamicVector&& v) noexcept
   {
@@ -56,13 +85,16 @@ public:
   // индексация
   T& operator[](size_t ind)
   {
+      return pMem[ind];
   }
   const T& operator[](size_t ind) const
   {
+      return pMem[ind];
   }
   // индексация с контролем
   T& at(size_t ind)
   {
+
   }
   const T& at(size_t ind) const
   {
