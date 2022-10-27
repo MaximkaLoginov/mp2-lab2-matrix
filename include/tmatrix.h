@@ -124,7 +124,7 @@ public:
   // сравнение
   bool operator==(const TDynamicVector& v) const noexcept
   {
-      if (sя != v.sz) {
+      if (sz != v.sz) {
           return false;
       }
 
@@ -313,7 +313,7 @@ public:
           throw out_of_range("Matrix are different size");
       }
 
-      TDynamicMatrix tmp(sv);
+      TDynamicMatrix tmp(sz);
 
       for (int i = 0; i < sz; i++) {
           for (int j = 0; j < sz; j++) {
