@@ -82,7 +82,7 @@ TEST(TDynamicMatrix, can_assign_matrices_of_equal_size)
     m2[0][1] = 20;
     m2 = m1;
     EXPECT_EQ(15, m2[0][0]);
-    EXPECT_EQ(20, m2[0][1]);
+    EXPECT_EQ(0, m2[0][1]);
 }
 
 TEST(TDynamicMatrix, assign_operator_change_matrix_size)
@@ -102,7 +102,7 @@ TEST(TDynamicMatrix, can_assign_matrices_of_different_size)
     m2[0][1] = 20;
     m2 = m1;
     EXPECT_EQ(15, m2[0][0]);
-    EXPECT_EQ(20, m2[0][1]);
+    EXPECT_EQ(0, m2[0][1]);
   
 }
 

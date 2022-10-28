@@ -83,9 +83,9 @@ TEST(TDynamicVector, can_assign_vectors_of_equal_size)
 
 	v1[0] = 100;
 	v2[1] = 123;
-	v1 = v2;
-	EXPECT_EQ(100, v1[0]);
-	EXPECT_EQ(123, v1[1]);
+	v2 = v1;
+	EXPECT_EQ(100, v2[0]);
+	EXPECT_EQ(0, v2[1]);
 }
 
 TEST(TDynamicVector, assign_operator_change_vector_size)
@@ -214,14 +214,14 @@ TEST(TDynamicVector, can_multiply_vectors_with_equal_size)
 {
 	TDynamicVector<int> v1(4);
 	TDynamicVector<int> v2(4);
-	TDynamicVector<int> v3;
+	
 
 	v1[0] = 5;
 	v2[0] = 5;
+	int a;
+	a = v1 * v2;
 
-	v3 = v1 * v2;
-
-	EXPECT_EQ(25, v3[0]);
+	EXPECT_EQ(25, a);
 }
 
 TEST(TDynamicVector, cant_multiply_vectors_with_not_equal_size)
